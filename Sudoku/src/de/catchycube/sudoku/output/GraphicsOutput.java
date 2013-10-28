@@ -38,7 +38,7 @@ public class GraphicsOutput {
 				String text = "" + sudoku.get(x, y);
 				int yp = y * tileHeight +(tileHeight/2) + yOff;
 				int xp = x*tileWidth + (tileWidth/2) - metrics.stringWidth(text)/2;
-				g.drawString(text, xp, yp);
+				if(sudoku.get(x, y) != 0)g.drawString(text, xp, yp);
 			}
 		}
 	}

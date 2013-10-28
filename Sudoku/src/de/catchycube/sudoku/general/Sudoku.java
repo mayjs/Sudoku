@@ -110,8 +110,8 @@ public class Sudoku {
 		
 		//Check each row and line
 		for(int x = 0; x < 9; x++){
-			int[] counterR = new int[9];
-			int[] counterL = new int[9];
+			int[] counterR = new int[10];
+			int[] counterL = new int[10];
 			for(int y = 0; y < 9; y++){
 				if(counterR[values[x][y]]++ > 1) return false;
 				if(counterL[values[y][x]]++ > 1) return false;
@@ -148,6 +148,11 @@ public class Sudoku {
 		}
 		
 		return true;
+	}
+	
+	public void clear(int x, int y){
+		preSet[x][y] = false;
+		values[x][y] = 0;
 	}
 	
 	public boolean isValid(int id, byte value){
