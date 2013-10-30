@@ -15,6 +15,9 @@ import javax.imageio.ImageIO;
 import de.catchycube.sudoku.general.Sudoku;
 
 public class GraphicsOutput {
+	
+	private static Color preSetColor = Color.black, insertedColor = Color.gray;
+	
 	public static void render(Sudoku sudoku, Graphics2D g, int width, int height){
 		g.setBackground(Color.white);
 		g.clearRect(0, 0, width, height);
@@ -38,7 +41,10 @@ public class GraphicsOutput {
 				String text = "" + sudoku.get(x, y);
 				int yp = y * tileHeight +(tileHeight/2) + yOff;
 				int xp = x*tileWidth + (tileWidth/2) - metrics.stringWidth(text)/2;
-				if(sudoku.get(x, y) != 0)g.drawString(text, xp, yp);
+				if(sudoku.get(x, y) != 0){
+					g.setColor(sudoku.isPreset(x, y)?preSetColor:insertedColor);
+					g.drawString(text, xp, yp);
+				}
 			}
 		}
 	}
@@ -52,15 +58,36 @@ public class GraphicsOutput {
 	 * @param height The image height (Should be a multiple of 9)
 	 */
 	public static void save(Sudoku sudoku, String fileName, String format, int width, int height){
+		save(sudoku,new File(fileName),format,width,height);
+	}
+	
+	public static void save(Sudoku sudoku, File file, String format, int width, int height){
 		try{
 			BufferedImage img = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
 			Graphics2D g = img.createGraphics();
 			g.setFont(new Font(Font.SERIF,Font.PLAIN,50));
 			render(sudoku,g,width,height);
-			File out = new File(fileName);
-			ImageIO.write(img, format, out);
+			ImageIO.write(img, format, file);
 		} catch(IOException e){
 			e.printStackTrace();
 		}
 	}
+
+	public static Color getPreSetColor() {
+		return preSetColor;
+	}
+
+	public static void setPreSetColor(Color preSetColor) {
+		GraphicsOutput.preSetColor = preSetColor;
+	}
+
+	public static Color getInsertedColor() {
+		return insertedColor;
+	}
+
+	public static void setInsertedColor(Color insertedColor) {
+		GraphicsOutput.insertedColor = insertedColor;
+	}
+	
+	
 }

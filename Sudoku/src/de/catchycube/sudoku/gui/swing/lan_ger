@@ -1,0 +1,30 @@
+playFrame_btnCheck=Prüfen
+playFrame_btnSave=Speichern
+playFrame_title=Sudoku
+playFrame_wrongAnswer=Diese Lösung ist leider falsch.
+playFrame_rightAnswer=Diese Lösung ist richtig!
+playFrame_txtFilter=Text-Dateien
+playFrame_saveGame=Spiel speichern unter...
+
+mainWindow_title=Hauptmenü
+mainWindow_startNewGame=Neues Spiel
+mainWindow_continueGame=Spiel laden
+mainWindow_generate=Sudoku erstellen
+mainWindow_loadTitle=Spiel laden...
+
+generatorDialog_defaultTitle=Generator
+generatorDialog_maximalRemovalSteps=Maximale Löschschritte:
+generatorDialog_maximalBruteForceDepth=Maximale Bruteforce-Tiefe:
+generatorDialog_generate=Generieren
+generatorDialog_abort=Abbrechen
+generatorDialog_invalidInput_title=Fehler
+generatorDialog_invalidInput_message=Fehlerhafte Eingabe!
+
+viewFrame_defaultTitle=Sudoku Anzeige
+viewFrame_showSolution=Lösung zeigen
+viewFrame_showSudoku=Rätsel anzeigen
+viewFrame_save=Sudoku speichern
+viewFrame_saveSolution=Soll die Lösung gespeichert werden?
+viewFrame_extension_txt=Text-Dokument zum später Spielen
+viewFrame_extension_jpg=Bild zum Ausdrucken
+viewFrame_selectResolution=Bitte eine Auflösung wählen

@@ -14,6 +14,7 @@ public class Generator {
 	
 	private Sudoku generatedSudoku;
 	private Sudoku generatedSolution;
+	private int removalSteps;
 	
 	private Sudoku generateRandomPermutation(){
 		Sudoku ret = new Sudoku();
@@ -40,7 +41,7 @@ public class Generator {
 	
 	private Sudoku removeAtRandomPoint(Sudoku sudoku){
 		Sudoku ret = sudoku.clone();
-		ret.clear((int)(Math.random()*9f), (int)(Math.random()*9f));
+		while(!ret.clear((int)(Math.random()*9f), (int)(Math.random()*9f))){}
 		return ret;
 	}
 	
@@ -54,8 +55,20 @@ public class Generator {
 		while(solver.solve(generated.getLast())!=null && generated.size() <= maximalRemovalSteps){
 			generated.addLast(removeAtRandomPoint(generated.getLast()));
 		}
-		
-		generatedSudoku = generated.get(generated.size() - 2);
+
+		generated.removeLast();
+		for(int x = 0; x < 9 && generated.size() < maximalRemovalSteps; x++){
+			for(int y = 0; y < 9 && generated.size() < maximalRemovalSteps; y++){
+				Sudoku newS = generated.getLast().clone();
+				if(newS.clear(x, y)){
+					if(solver.solve(newS) != null){
+						generated.addLast(newS);
+					}
+				}
+			}
+		}
+		removalSteps = generated.size();
+		generatedSudoku = generated.get(generated.size() - 1);
 	}
 	
 	public Sudoku getSudoku(){
@@ -89,5 +102,7 @@ public class Generator {
 		this.initialRemovalSteps = initialRemovalSteps;
 	}
 	
-	
+	public int getRemovalSteps(){
+		return removalSteps;
+	}
 }

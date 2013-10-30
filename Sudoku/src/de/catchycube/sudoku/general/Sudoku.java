@@ -28,12 +28,26 @@ public class Sudoku {
 	
 	public static Sudoku parse(String[] input){
 		Sudoku ret = new Sudoku();
+		if(input.length < 9) return null;
 		for(int y = 0; y < 9; y++){
 			String current = input[y];
 			for(int x = 0; x < 9; x++){
 				int n = (int)current.charAt(x)-48;
 				if(n >0&&n<10){
 					ret.preSetNumber(x, y, (byte)n);
+				}
+			}
+		}
+		if(input.length >= 18){
+			for(int lineNumber = 9; lineNumber < 18; lineNumber++){
+				String current = input[lineNumber];
+				int y = lineNumber - 9;
+				for(int x = 0; x < 9; x++){
+					if(current.charAt(x) == '0'){
+						byte n = new Byte(ret.get(x, y));
+						ret.clear(x,y);
+						ret.set(x, y, n);
+					}
 				}
 			}
 		}
@@ -150,9 +164,11 @@ public class Sudoku {
 		return true;
 	}
 	
-	public void clear(int x, int y){
+	public boolean clear(int x, int y){
+		boolean res = preSet[x][y] == true && values[x][y] != 0;
 		preSet[x][y] = false;
 		values[x][y] = 0;
+		return res;
 	}
 	
 	public boolean isValid(int id, byte value){
