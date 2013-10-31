@@ -19,7 +19,16 @@ public class Generator {
 	private Sudoku generateRandomPermutation(){
 		Sudoku ret = new Sudoku();
 		
+		int sameCounter = 0;
+		int last = -1;
 		for(int i = 0; i < 9; i++){
+			if(last == i) sameCounter++;
+			else{
+				last = i;
+				sameCounter = 0;
+			}
+			if(sameCounter > 20) return generateRandomPermutation();
+			
 			List<Byte> numbers = new LinkedList<Byte>();
 			for(byte n = 1; n < 10; n++) numbers.add(n);
 			int counter = 0;

@@ -14,6 +14,7 @@ import javax.swing.UIManager;
 
 import de.catchycube.sudoku.generation.Generator;
 import de.catchycube.sudoku.gui.swing.language.Language;
+import de.catchycube.sudoku.gui.swing.properties.Properties;
 import de.catchycube.sudoku.input.Loader;
 
 public class MainWindow extends JFrame implements ActionListener, WindowListener{
@@ -89,8 +90,10 @@ public class MainWindow extends JFrame implements ActionListener, WindowListener
 	
 	public static void main(String[] args){
 		try{
-		Language l = Language.load(MainWindow.class.getResourceAsStream("lan_ger"));
-		Language.setCurrent(l);
+			Language l = Language.load(Language.class.getResourceAsStream("lan_ger"));
+			Language.setCurrent(l);
+			Properties p = Properties.load(Properties.class.getResourceAsStream("settings"));
+			p.setCurrent(p);
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

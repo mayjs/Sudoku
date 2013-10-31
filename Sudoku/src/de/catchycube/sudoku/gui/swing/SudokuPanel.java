@@ -15,7 +15,7 @@ public class SudokuPanel extends JPanel{
 	@Override
 	public void paint(Graphics g){
 		super.paint(g);
-		g.setFont(new Font(Font.SERIF,Font.PLAIN,50));
+		g.setFont(new Font(Font.SERIF,Font.PLAIN,(int)(getHeight()*GraphicsOutput.fontFactor)));
 		GraphicsOutput.render(sudoku, (Graphics2D)g, getWidth(), getHeight());
 	}
 

@@ -17,6 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import de.catchycube.sudoku.general.Sudoku;
 import de.catchycube.sudoku.gui.swing.language.Language;
+import de.catchycube.sudoku.gui.swing.properties.Properties;
 import de.catchycube.sudoku.output.FileOutput;
 
 public class PlayFrame extends JFrame implements ActionListener{
@@ -38,7 +39,8 @@ public class PlayFrame extends JFrame implements ActionListener{
 		super(Language.getCurrent().getVocabulary(KEY_TITLE));
 		panel = new InputSudokuPanel();
 		panel.setSudoku(sudoku);
-		panel.setPreferredSize(new Dimension(450,450));
+		panel.setPreferredSize(new Dimension(Integer.parseInt(Properties.getCurrent().getProperty("sudoku_render_width", "450")),
+				Integer.parseInt(Properties.getCurrent().getProperty("sudoku_render_height", "450"))));
 		
 		JButton btnCheck = new JButton(Language.getCurrent().getVocabulary(KEY_CHECK));
 		btnCheck.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -16,6 +16,8 @@ import de.catchycube.sudoku.general.Sudoku;
 
 public class GraphicsOutput {
 	
+	public static float fontFactor = 5f/45f;
+	
 	private static Color preSetColor = Color.black, insertedColor = Color.gray;
 	
 	public static void render(Sudoku sudoku, Graphics2D g, int width, int height){
@@ -65,7 +67,7 @@ public class GraphicsOutput {
 		try{
 			BufferedImage img = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
 			Graphics2D g = img.createGraphics();
-			g.setFont(new Font(Font.SERIF,Font.PLAIN,50));
+			g.setFont(new Font(Font.SERIF,Font.PLAIN,(int)(fontFactor * height)));
 			render(sudoku,g,width,height);
 			ImageIO.write(img, format, file);
 		} catch(IOException e){
