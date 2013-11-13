@@ -1,2 +1,6 @@
 sudoku_render_width=360
 sudoku_render_height=360
+
+applet_generator_easy_remove_Steps=40
+applet_generator_average_remove_Steps=50
+applet_generator_hard_remove_Steps=60

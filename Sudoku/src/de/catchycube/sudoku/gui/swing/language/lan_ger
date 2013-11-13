@@ -28,3 +28,8 @@ viewFrame_saveSolution=Soll die Lösung gespeichert werden?
 viewFrame_extension_txt=Text-Dokument zum später Spielen
 viewFrame_extension_jpg=Bild zum Ausdrucken
 viewFrame_selectResolution=Bitte eine Auflösung wählen
+
+applet_generatorSettings_easy=Einfach
+applet_generatorSettings_average=Mittel
+applet_generatorSettings_hard=Schwer
+applet_generatorSettings_selectDifficulty=Schwierigkeit wählen:
